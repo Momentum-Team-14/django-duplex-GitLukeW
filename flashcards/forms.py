@@ -1,6 +1,5 @@
 from django import forms
-
-from .models import Flashcard
+from .models import Categories, Flashcard
 
 
 class FlashcardsForm(forms.ModelForm):
@@ -8,3 +7,10 @@ class FlashcardsForm(forms.ModelForm):
     class Meta:
         model = Flashcard
         fields = ('question', 'answer', 'category', 'user')
+
+
+class CategoriesForm(forms.ModelForm):
+
+    class Meta:
+        model = Categories
+        fields = ('category',)

@@ -1,0 +1,25 @@
+{% extends 'flashcards/base.html' %} 
+
+
+{% block content %}
+<div class="categories_page">Please Pick a Category:</div>
+{% for categories in categories %}
+<div class="categories_list">
+  {{ categories.category }}
+</div>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<div>Hello World</div>
+<div class="new_category_button">
+  <p class="text">Add New Category</p>
+  <a href="{% url 'categories_new' %}" class="btn btn-secondary">
+    {% include './icons/box2-fill.svg' %}
+  </a>
+</div>
+{% endif %}
+
+
+
+{% endblock %}
+
