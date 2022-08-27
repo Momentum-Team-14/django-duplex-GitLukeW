@@ -25,7 +25,7 @@ class Flashcard(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='flashcards')
     category = models.ForeignKey(
-        Categories, on_delete=models.CASCADE, related_name='flashcards')
+        Categories, on_delete=models.CASCADE, related_name='categories')
 
     def __str_(self):
         return f'{self.answer} in {self.question}'

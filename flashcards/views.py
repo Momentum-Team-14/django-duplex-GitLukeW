@@ -10,13 +10,13 @@ from.forms import CategoriesForm
 
 
 
-def categories(request):
-    categories = Categories.objects.all()
-    return render(request, 'flashcards/categories.html', {'flashcards': categories})
+def categories_list(request):
+    category = Categories.objects.all()
+    return render(request, 'flashcards/categories_list.html', {'categories': category})
 
 def categories_detail(request, pk):
     categories = get_object_or_404(Categories, pk=pk)
-    return render(request, 'flashcards/categories_detail.html', {"flashcards": categories})
+    return render(request, 'flashcards/categories_detail.html', {"categories": categories})
 
 def categories_new(request):
     if request.method == "POST":
