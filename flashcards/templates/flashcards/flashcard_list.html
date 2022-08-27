@@ -1,0 +1,10 @@
+{% extends 'flashcards/base.html' %} {% block content %} {% for flashcards in flashcards %}
+<article class="flashcard-holder">
+  <h2>{{ flashcards.question }}</a></h2>
+  <div class="flashcard_info"><p> {{ flashcards.answer }}</p></div>
+  <div class="created">
+  </div>
+</article>
+{% endfor %} {% endblock %}
+
+<!-- <a href="{% url 'flashcard_detail' pk=flashcard.pk %}"></a> -->
