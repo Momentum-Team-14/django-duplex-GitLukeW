@@ -16,27 +16,27 @@ def categories_detail(request, pk):
 
 def categories_new(request):
     if request.method == "POST":
-        form = CategoriesForm(request.POST)
-        if form.is_valid():
-            categories = form.save(commit=False)
+        category_form = CategoriesForm(request.POST)
+        if category_form.is_valid():
+            categories = category_form.save(commit=False)
             categories.author = request.user
             categories.save()
             return redirect('categories_detail', pk=categories.pk)
     else:
-        form = CategoriesForm()
-    return render(request, 'flashcards/categories_edit.html', {'form': form})
+        category_form = CategoriesForm()
+    return render(request, 'flashcards/categories_edit.html', {'category_form': category_form})
 
 
 def categories_edit(request, pk):
     post = get_object_or_404(Categories, pk=pk)
     if request.method == "POST":
-        form = CategoriesForm(request.POST, instance=post)
-        if form.is_valid():
-            categories = form.save()
+        category_form = CategoriesForm(request.POST, instance=post)
+        if category_form.is_valid():
+            categories = category_form.save()
             return redirect('categories_detail', pk=post.pk)
     else:
-        form = CategoriesForm(instance=post)
-    return render(request, 'flashcards/categories_edit.html', {'form': form})
+        category_form = CategoriesForm(instance=post)
+    return render(request, 'flashcards/categories_edit.html', {'category_form': category_form})
 
 
 def category_remove(request, pk):
@@ -57,27 +57,27 @@ def flashcard_detail(request, pk):
 
 def flashcard_new(request):
     if request.method == "POST":
-        form = FlashcardsForm(request.POST)
-        if form.is_valid():
-            flashcards = form.save(commit=False)
+        flashcard_form = FlashcardsForm(request.POST)
+        if flashcard_form.is_valid():
+            flashcards = flashcard_form.save(commit=False)
             flashcards.author = request.user
             flashcards.save()
             return redirect('flashcard_detail.html', pk=flashcards.pk)
     else:
-        form = FlashcardsForm()
-    return render(request, 'flashcards/flashcard_edit.html', {'form': form})
+        flashcard_form = FlashcardsForm()
+    return render(request, 'flashcards/flashcard_edit.html', {'flashcard_form': flashcard_form})
 
 
 def flashcard_edit(request, pk):
     post = get_object_or_404(Flashcard, pk=pk)
     if request.method == "POST":
-        form = FlashcardsForm(request.POST, instance=post)
-        if form.is_valid():
-            flashcard = form.save()
+        flashcard_form = FlashcardsForm(request.POST, instance=post)
+        if flashcard_form.is_valid():
+            flashcard = flashcard_form.save()
             return redirect('flashcard_detail', pk=post.pk)
     else:
-        form = FlashcardsForm(instance=post)
-    return render(request, 'flashcards/flashcard_edit.html', {'form': form})
+        flashcard_form = FlashcardsForm(instance=post)
+    return render(request, 'flashcards/flashcard_edit.html', {'flashcard_form': flashcard_form})
 
 
 def flashcard_remove(request, pk):
