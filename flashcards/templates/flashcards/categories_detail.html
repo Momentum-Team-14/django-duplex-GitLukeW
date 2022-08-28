@@ -1,33 +1,45 @@
 {% extends 'flashcards/base.html' %}
 {% block content %}
-<div class="flashcard_detail">
-  <p class="flashcard_detail_flashcard">Question:</p>
-  {{ flashcards.question }}
-</div>
-<div class="flashcard_artist">
-  <p class="flashcard_detail_flashcard">Answer:</p>
-  {{ flashcards.answer }}
-</div>
+
+
 <aside class="actions">
   {% if user.is_authenticated %}
   <form
-    class="inline"
-    action="{% url 'flashcard_remove' pk=flashcards.pk %}"
-    method="post"
+  class="inline"
+  action="{% url 'category_remove' pk=categories.pk %}"
+  method="post"
   >
-    {% csrf_token %}
-    <a class="btn btn-secondary" href="{% url 'flashcard_edit' pk=flashcards.pk %}">
-      {% include './icons/pencil-square.svg' %}
-    </a>
-
-    <input
-      class="btn btn-danger"
-      href="{% url 'flashcard_remove' pk=flashcards.pk %}"
-      type="submit"
-      value="Delete"
-      onclick="return confirm('Confirm, Delete.');"
-    />
-  </form>
-  {% endif %}
+  {% csrf_token %}
+  <a class="btn btn-secondary" href="{% url 'categories_edit' pk=categories.pk %}">
+    {% include './icons/pencil-square.svg' %}
+  </a>
+  
+  <input
+  class="btn btn-danger"
+  href="{% url 'category_remove' pk=categories.pk %}"
+  type="submit"
+  value="Delete"
+  onclick="return confirm('Confirm, Delete.');"
+  />
+</form>
 </aside>
+{% endif %}
+
+
+<div class="categories_detail"> Category:
+  {{ categories.category }}
+</div>
+
+<div class="flashcard_list"> Flashcards:
+  {{ flashcards }}
+  {{ flashcards.question }}
+  {{ categories }}
+  {{ flashcard }}
+  {{ Flashcard }}
+  {{ Flashcards }}
+
+  dfrswvwsv
+</div>
+
+
 {% endblock %}

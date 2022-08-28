@@ -15,7 +15,13 @@
 <ul>
   <a href="{% url 'categories_detail' pk=categories.pk %}">{{ categories.category }}</a>
 </ul>
+
 {% endfor %}
 
-
+{{ flashcards }}
+{{ flashcards.question }}
+{{ flashcard.question }}
+{{ flashcard }}
+{{ Flashcard }}
+{{ Flashcards }}
 {% endblock %}

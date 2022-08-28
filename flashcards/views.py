@@ -4,19 +4,19 @@ from django.shortcuts import render, get_object_or_404
 from .models import Flashcard
 from .forms import FlashcardsForm
 from django.shortcuts import redirect
-from django.utils import timezone
 from .models import Categories
-from.forms import CategoriesForm
-
+from .forms import CategoriesForm
 
 
 def categories_list(request):
     category = Categories.objects.all()
     return render(request, 'flashcards/categories_list.html', {'categories': category})
 
+
 def categories_detail(request, pk):
     categories = get_object_or_404(Categories, pk=pk)
     return render(request, 'flashcards/categories_detail.html', {"categories": categories})
+
 
 def categories_new(request):
     if request.method == "POST":
@@ -30,21 +30,28 @@ def categories_new(request):
         form = CategoriesForm()
     return render(request, 'flashcards/categories_edit.html', {'form': form})
 
+
 def categories_edit(request, pk):
     post = get_object_or_404(Categories, pk=pk)
     if request.method == "POST":
         form = CategoriesForm(request.POST, instance=post)
         if form.is_valid():
             categories = form.save()
-            return redirect('categories_new', pk=post.pk)
+            return redirect('categories_detail', pk=post.pk)
     else:
-        form = FlashcardsForm(instance=post)
+        form = CategoriesForm(instance=post)
     return render(request, 'flashcards/categories_edit.html', {'form': form})
+
+
+def category_remove(request, pk):
+    post = get_object_or_404(Categories, pk=pk)
+    post.delete()
+    return redirect('categories_list')
 
 
 def flashcard_list(request):
     flashcards = Flashcard.objects.all()
-    return render(request, 'flashcards/flashcard_list.html', {'flashcards': flashcards})
+    return render(request, 'flashcards/categories_detail.html', {'categories': flashcards})
 
 
 def flashcards_detail(request, pk):
@@ -59,7 +66,7 @@ def flashcard_new(request):
             flashcards = form.save(commit=False)
             flashcards.author = request.user
             flashcards.save()
-            return redirect('flashcards_detail', pk=flashcards.pk)
+            return redirect('flashcards_detail.html', pk=flashcards.pk)
     else:
         form = FlashcardsForm()
     return render(request, 'flashcards/flashcard_edit.html', {'form': form})
