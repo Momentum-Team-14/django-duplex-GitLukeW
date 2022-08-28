@@ -27,5 +27,5 @@ class Flashcard(models.Model):
     category = models.ForeignKey(
         Categories, on_delete=models.CASCADE, related_name='categories')
 
-    def __str_(self):
+    def __str__(self):
         return f'{self.answer} in {self.question}'

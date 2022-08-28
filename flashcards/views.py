@@ -1,11 +1,7 @@
-from unicodedata import category
-from django.shortcuts import render
-from django.shortcuts import render, get_object_or_404
-from .models import Flashcard
-from .forms import FlashcardsForm
-from django.shortcuts import redirect
-from .models import Categories
-from .forms import CategoriesForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Flashcard, Categories
+from .forms import FlashcardsForm, CategoriesForm
+
 
 
 def categories_list(request):
@@ -51,10 +47,10 @@ def category_remove(request, pk):
 
 def flashcard_list(request):
     flashcards = Flashcard.objects.all()
-    return render(request, 'flashcards/categories_detail.html', {'categories': flashcards})
+    return render(request, 'flashcards/categories_detail.html', {'flashcards': flashcards})
 
 
-def flashcards_detail(request, pk):
+def flashcard_detail(request, pk):
     flashcards = get_object_or_404(Flashcard, pk=pk)
     return render(request, 'flashcards/flashcard_detail.html', {"flashcards": flashcards})
 
@@ -66,7 +62,7 @@ def flashcard_new(request):
             flashcards = form.save(commit=False)
             flashcards.author = request.user
             flashcards.save()
-            return redirect('flashcards_detail.html', pk=flashcards.pk)
+            return redirect('flashcard_detail.html', pk=flashcards.pk)
     else:
         form = FlashcardsForm()
     return render(request, 'flashcards/flashcard_edit.html', {'form': form})
