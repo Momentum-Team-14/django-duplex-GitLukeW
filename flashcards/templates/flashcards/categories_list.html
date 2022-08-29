@@ -11,17 +11,10 @@
 {% endif %}
 
 <div class="categories_page">Please Pick a Category:</div>
-{% for categories in categories %}
+{% for category in categories %}
 <ul>
-  <a href="{% url 'categories_detail' pk=categories.pk %}">{{ categories.category }}</a>
+  <a href="{% url 'categories_detail' pk=category.pk %}">{{ category }}</a>
 </ul>
 
 {% endfor %}
-
-{{ flashcards }}
-{{ flashcards.question }}
-{{ flashcard.question }}
-{{ flashcard }}
-{{ Flashcard }}
-{{ Flashcards }}
 {% endblock %}

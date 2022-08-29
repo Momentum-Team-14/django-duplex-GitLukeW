@@ -10,8 +10,8 @@ def categories_list(request):
 
 
 def categories_detail(request, pk):
-    categories = get_object_or_404(Categories, pk=pk)
-    return render(request, 'flashcards/categories_detail.html', {"categories": categories})
+    category = get_object_or_404(Categories, pk=pk)
+    return render(request, 'flashcards/categories_detail.html', {"category": category, 'flashcards': category.flashcards.all()})
 
 
 def categories_new(request):
@@ -84,3 +84,9 @@ def flashcard_remove(request, pk):
     post = get_object_or_404(Flashcard, pk=pk)
     post.delete()
     return redirect('flashcard_list')
+
+
+def flashcard_view(request, pk):
+    category = get_object_or_404(Categories, pk=pk)
+    flashcards = category.flashcards.all()
+    return render(request, 'flashcards/categories_detail.html', {'flashcards': flashcards})

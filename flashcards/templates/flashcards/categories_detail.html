@@ -27,29 +27,17 @@
 
 
 <div class="categories_detail"> Category:
-  {{ categories.category }}
+  {{ category.category }}
 </div>
 
 <div class="flashcard_list"> Flashcards:
-  <ul>
-      {{ flashcards }}
-      {{ flashcards.answer }}
-      <!-- {{ categories }} -->
-      {{ flashcard }}
-      {{ Flashcard }}
-      {{ Flashcards }}
-      <!-- {{ user }} -->
-      {{ Flashcard }}
-      {{ flashcard.question }}
-      {{ Flashcard.question }}
-      {{ answer }}
-      {{ category }}
-      <!-- {{ user }}
-      {{ user }} -->
-  </ul>
+  <ul> {% for flashcard in flashcards %}
+    <li>{{ flashcard }}</li>
+ 
 
-  ---------------
-  dfrswvwsv
+  {% endfor %}</ul>
+
+
 </div>
 
 
