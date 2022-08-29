@@ -1,44 +1,41 @@
-{% extends 'flashcards/base.html' %}
-{% block content %}
-
+{% extends 'flashcards/base.html' %} {% block content %}
 
 <aside class="actions">
   {% if user.is_authenticated %}
   <form
-  class="inline"
-  action="{% url 'category_remove' pk=categories.pk %}"
-  method="post"
+    class="inline"
+    action="{% url 'category_remove' pk=category.pk %}"
+    method="post"
   >
-  {% csrf_token %}
-  <a class="btn btn-secondary" href="{% url 'categories_edit' pk=categories.pk %}">
-    {% include './icons/pencil-square.svg' %}
-  </a>
-  
-  <input
-  class="btn btn-danger"
-  href="{% url 'category_remove' pk=categories.pk %}"
-  type="submit"
-  value="Delete"
-  onclick="return confirm('Confirm, Delete.');"
-  />
-</form>
+    {% csrf_token %}
+    <a
+      class="btn btn-secondary"
+      href="{% url 'categories_edit' pk=category.pk %}"
+    >
+      {% include './icons/pencil-square.svg' %}
+    </a>
+
+    <input
+      class="btn btn-danger"
+      href="{% url 'category_remove' pk=category.pk %}"
+      type="submit"
+      value="Delete"
+      onclick="return confirm('Confirm, Delete.');"
+    />
+  </form>
 </aside>
 {% endif %}
 
+<div class="categories_detail">Category: {{ category.category }}</div>
 
-<div class="categories_detail"> Category:
-  {{ category.category }}
+<div class="flashcard_list">
+  Flashcards:
+  <ul>
+    {% for flashcard in flashcards %}
+    <li>{{ flashcard.question }}</li>
+
+    {% endfor %}
+  </ul>
 </div>
-
-<div class="flashcard_list"> Flashcards:
-  <ul> {% for flashcard in flashcards %}
-    <li>{{ flashcard }}</li>
- 
-
-  {% endfor %}</ul>
-
-
-</div>
-
 
 {% endblock %}

@@ -19,7 +19,7 @@ def categories_new(request):
         category_form = CategoriesForm(request.POST)
         if category_form.is_valid():
             categories = category_form.save(commit=False)
-            categories.author = request.user
+            categories.user = request.user
             categories.save()
             return redirect('categories_detail', pk=categories.pk)
     else:
@@ -59,10 +59,10 @@ def flashcard_new(request):
     if request.method == "POST":
         flashcard_form = FlashcardsForm(request.POST)
         if flashcard_form.is_valid():
-            flashcards = flashcard_form.save(commit=False)
-            flashcards.author = request.user
-            flashcards.save()
-            return redirect('flashcard_detail.html', pk=flashcards.pk)
+            flashcard = flashcard_form.save(commit=False)
+            flashcard.user = request.user
+            flashcard.save()
+            return redirect('flashcard_detail', pk=flashcard.pk)
     else:
         flashcard_form = FlashcardsForm()
     return render(request, 'flashcards/flashcard_edit.html', {'flashcard_form': flashcard_form})

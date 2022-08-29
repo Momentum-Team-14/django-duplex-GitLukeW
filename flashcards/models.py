@@ -28,4 +28,4 @@ class Flashcard(models.Model):
         User, on_delete=models.CASCADE, related_name='flashcards')
 
     def __str__(self):
-        return f'{self.answer} in {self.question}'
+        return f'{self.question} {self.answer}'
