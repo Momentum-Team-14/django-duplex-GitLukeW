@@ -7,22 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>Flashcards</title>
   </head>
+
   <body>
     <header class="page-header">
-      <a href="{% url 'admin:index' %}">Admin Panel</a>
-      <div><a href="/accounts/register">New User</a></div>
-      <div><a href="/accounts/login">Login</a></div>
+      {% if user.is_authenticated %}
+      <div><a href="{% url 'admin:index' %}">Admin Panel</a></div>
+      <div class="username">User: {{request.user.username}}</div>
       <div><a href="/accounts/logout">Logout</a></div>
       <h1><a href="/">Flashcards!</a></h1>
-        {% if user.is_authenticated %}
-        <div class="new_button">
-          <p class="text">Add New Flashcards</p>
-          <a href="{% url 'flashcard_new' %}" class="btn btn-secondary">
-            {% include './icons/box2-fill.svg' %}
-          </a>
+      <div class="new_button">
+        <p class="text">Add New Flashcards</p>
+        <a href="{% url 'flashcard_new' %}" class="btn btn-secondary">
+          {% include 'flashcards/icons/box2-fill.svg' %}
+        </a>
+      {% else %}
+      <div class="register"><a href="/accounts/register">New User</a></div>
+      <div><a href="/accounts/login">Login</a></div>
+      <h1><a href="/">Flashcards!</a></h1>
         {% endif %}
       </div>
     </header>
@@ -32,3 +36,4 @@
       </div>
     </main>
   </body>
+</html>
