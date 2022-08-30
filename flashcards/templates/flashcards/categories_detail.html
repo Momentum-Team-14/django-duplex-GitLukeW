@@ -28,14 +28,10 @@
 
 <div class="categories_detail_header">Category: {{ category.category }}</div>
 <div class="flashcard_list_header">Flashcards:</div>
-<div class="flashcard_list">
-  <ul>
+  <ul class="flashcard_list">
     {% for flashcard in flashcards %}
-    <li>{{ flashcard.question }}</li>
-
+    <a class="flashcard_list_box" href="{% url 'flashcard_detail' pk=flashcard.pk %}">{{ flashcard.question }}</a>
     {% endfor %}
-    
   </ul>
-</div>
 
 {% endblock %}
