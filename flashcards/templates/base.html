@@ -12,6 +12,10 @@
   </head>
   <body>
     <header class="page-header">
+      <a href="{% url 'admin:index' %}">Admin Panel</a>
+      <div><a href="/accounts/register">New User</a></div>
+      <div><a href="/accounts/login">Login</a></div>
+      <div><a href="/accounts/logout">Logout</a></div>
       <h1><a href="/">Flashcards!</a></h1>
         {% if user.is_authenticated %}
         <div class="new_button">
