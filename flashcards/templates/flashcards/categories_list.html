@@ -12,7 +12,7 @@
 
 <div class="categories_page">Please Pick a Category:</div>
 {% for category in categories %}
-<ul>
+<ul class="categories_list">
   <a href="{% url 'categories_detail' pk=category.pk %}">{{ category }}</a>
 </ul>
 

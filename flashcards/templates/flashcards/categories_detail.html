@@ -26,15 +26,15 @@
 </aside>
 {% endif %}
 
-<div class="categories_detail">Category: {{ category.category }}</div>
-
+<div class="categories_detail_header">Category: {{ category.category }}</div>
+<div class="flashcard_list_header">Flashcards:</div>
 <div class="flashcard_list">
-  Flashcards:
   <ul>
     {% for flashcard in flashcards %}
     <li>{{ flashcard.question }}</li>
 
     {% endfor %}
+    
   </ul>
 </div>
 

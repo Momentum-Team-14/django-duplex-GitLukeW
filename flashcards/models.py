@@ -21,8 +21,8 @@ class Categories(models.Model):
 class Flashcard(models.Model):
     category = models.ForeignKey(
         Categories, on_delete=models.CASCADE, related_name='flashcards')
-    question = models.TextField()
-    answer = models.CharField(max_length=512)
+    question = models.CharField(max_length=512)
+    answer = models.TextField()
     # related name should be the plural of the model that it's in
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='flashcards')
