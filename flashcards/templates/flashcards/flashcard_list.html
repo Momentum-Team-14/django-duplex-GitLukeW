@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% for flashcards in flashcards %}
+{% if user.is_authenticated %}
 <article class="flashcard-holder">
   <h2>{{ flashcards.question }}</a></h2>
   <!-- <div class="flashcard_info"><p> {{ flashcards.answer }}</p></div> -->
@@ -9,7 +10,6 @@
 {% endfor %} {% endblock %}
 
 
-{% if user.is_authenticated %}
 <div class="new_button">
   <p class="text">Add New Flashcards</p>
   <a href="{% url 'flashcard_new' %}" class="btn btn-secondary">

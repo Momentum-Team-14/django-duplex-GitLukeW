@@ -22,7 +22,6 @@
       onclick="return confirm('Confirm, Delete.');"
     />
   </form>
-  {% endif %}
 </aside>
 
 <div class="flashcard_question">
@@ -33,4 +32,5 @@
   <p class="flashcard_detail_flashcard">Answer:</p>
   {{ flashcards.answer }}
 </div>
+{% endif %}
 {% endblock %}

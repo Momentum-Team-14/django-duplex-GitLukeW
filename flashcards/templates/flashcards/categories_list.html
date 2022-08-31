@@ -8,13 +8,13 @@
     {% include './icons/box2-fill.svg' %}
   </a>
 </div>
-{% endif %}
 
 <div class="categories_page">Please Pick a Category:</div>
 <ul class="categories_list">
-{% for category in categories %}
+  {% for category in categories %}
   <a class="categories_list_box" href="{% url 'categories_detail' pk=category.pk %}">{{ category }}</a>
   {% endfor %}
 </ul>
 
+{% endif %}
 {% endblock %}
