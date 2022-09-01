@@ -2,6 +2,11 @@
 
 <aside class="actions">
   {% if user.is_authenticated %}
+  <p class="new_flashcard_button">Add New Flashcards</p>
+  <a href="{% url 'flashcard_new' %}" class="btn btn-secondary">
+    {% include 'flashcards/icons/box2-fill.svg' %}
+  </a>
+  
   <form
     class="inline"
     action="{% url 'category_remove' pk=category.pk %}"
@@ -11,8 +16,7 @@
     <a
       class="btn btn-secondary"
       href="{% url 'categories_edit' pk=category.pk %}"
-    >Edit
-      {% include './icons/pencil-square.svg' %}
+      >Edit {% include './icons/pencil-square.svg' %}
     </a>
 
     <input
@@ -28,9 +32,13 @@
 
 <div class="categories_detail_header">Category: {{ category.category }}</div>
 <div class="flashcard_list_header">Flashcards:</div>
-  <ul class="flashcard_list">
-    {% for flashcard in flashcards %}
-    <a class="flashcard_list_box" href="{% url 'flashcard_detail' pk=flashcard.pk %}">{{ flashcard.question }}</a>
-    {% endfor %}
-  </ul>
+<ul class="flashcard_list">
+  {% for flashcard in flashcards %}
+  <a
+    class="flashcard_list_box"
+    href="{% url 'flashcard_detail' pk=flashcard.pk %}"
+    >{{ flashcard.question }}</a
+  >
+  {% endfor %}
+</ul>
 {% endblock %}
