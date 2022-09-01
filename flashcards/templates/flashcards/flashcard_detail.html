@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<!-- <button href="/flashcards/flashcard_list">Back</button> -->
+
 <aside class="actions">
   {% if user.is_authenticated %}
   <form
@@ -29,9 +29,10 @@
   <p class="flashcard_detail_flashcard">Question:</p>
   {{ flashcards.question }}
 </div>
+
 <div class="flashcard_answer">
   <p class="flashcard_detail_flashcard">Answer:</p>
   {{ flashcards.answer }}
 </div>
-{% endif %}
-{% endblock %}
+
+{% endif %} {% endblock %}

@@ -11,7 +11,7 @@
     <a
       class="btn btn-secondary"
       href="{% url 'categories_edit' pk=category.pk %}"
-    >
+    >Edit
       {% include './icons/pencil-square.svg' %}
     </a>
 
@@ -33,5 +33,4 @@
     <a class="flashcard_list_box" href="{% url 'flashcard_detail' pk=flashcard.pk %}">{{ flashcard.question }}</a>
     {% endfor %}
   </ul>
-
 {% endblock %}

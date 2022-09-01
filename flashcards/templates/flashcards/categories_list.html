@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-{% block content %}
+{% block content %} 
 
 {% if user.is_authenticated %}
 <div class="new_category_button">
@@ -9,12 +9,18 @@
   </a>
 </div>
 
+<p class="new_flashcard_button">Add New Flashcards</p>
+<a href="{% url 'flashcard_new' %}" class="btn btn-secondary">
+  {% include 'flashcards/icons/box2-fill.svg' %}
+</a>
+
 <div class="categories_page">Please Pick a Category:</div>
 <ul class="categories_list">
   {% for category in categories %}
-  <a class="categories_list_box" href="{% url 'categories_detail' pk=category.pk %}">{{ category }}</a>
+  <a
+    class="categories_list_box"
+    href="{% url 'categories_detail' pk=category.pk %}">{{ category }}</a>
   {% endfor %}
 </ul>
 
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %}
